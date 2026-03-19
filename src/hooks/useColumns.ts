@@ -1,0 +1,48 @@
+import { useState, useEffect } from 'react'
+import { supabase } from '@/lib/supabase'
+import { Column } from '@/types'
+
+export function useColumns(boardId: string | undefined) {
+  const [columns, setColumns] = useState<Column[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  const fetchColumns = async () => {
+    if (!boardId) return
+    setLoading(true)
+    const { data, error } = await supabase
+      .from('columns')
+      .select('*')
+      .eq('board_id', boardId)
+      .order('position', { ascending: true })
+
+    if (error) {
+      setError(error.message)
+    } else {
+      setColumns(data || [])
+    }
+    setLoading(false)
+  }
+
+  const createColumn = async (name: string) => {
+    if (!boardId) return
+    const position = columns.length
+
+    const { data, error } = await supabase
+      .from('columns')
+      .insert({ name, board_id: boardId, position })
+      .select()
+      .single()
+
+    if (!error && data) {
+      setColumns((prev) => [...prev, data])
+    }
+    return { data, error }
+  }
+
+  useEffect(() => {
+    fetchColumns()
+  }, [boardId])
+
+  return { columns, loading, error, createColumn, refetch: fetchColumns }
+}
