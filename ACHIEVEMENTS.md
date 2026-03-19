@@ -35,24 +35,24 @@
 - [ ] useCards.ts (WITH intentional bug)
 
 ## Phase 5 — Pages
-- [ ] LoginPage.tsx (with data-testid)
-- [ ] BoardsPage.tsx (with data-testid)
-- [ ] BoardDetailPage.tsx
+- [x] LoginPage.tsx (with data-testid)
+- [x] BoardsPage.tsx (with data-testid)
+- [x] BoardDetailPage.tsx
 
 ## Phase 6 — App Routing
-- [ ] App.tsx with routes and auth guard
-- [ ] main.tsx
+- [x] App.tsx with routes and auth guard
+- [x] main.tsx
 
 ## Phase 7 — Drag & Drop
-- [ ] DndContext in BoardDetailPage
-- [ ] KanbanCard draggable
-- [ ] KanbanColumn droppable
-- [ ] onDragEnd → handleCardDrop
+- [x] DndContext in BoardDetailPage
+- [x] KanbanCard draggable
+- [x] KanbanColumn droppable
+- [x] onDragEnd → handleCardDrop
 
 ## Phase 8 — E2E Tests
-- [ ] playwright.config.ts
-- [ ] e2e/kanban.spec.ts (3 tests)
-- [ ] data-testid verified in components
+- [x] playwright.config.ts
+- [x] e2e/kanban.spec.ts (3 tests)
+- [x] data-testid verified in components
 
 ## Phase 9 — Demo Setup
 - [ ] supabase start + db push
