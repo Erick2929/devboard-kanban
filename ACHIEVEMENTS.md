@@ -8,31 +8,31 @@
 - [x] vite.config.ts with @/ alias
 - [x] tsconfig with paths
 - [x] .env.example created
-- [ ] GitHub repo created + first commit
+- [x] GitHub repo created + first commit
 
 ## Phase 1 — Supabase & Types
-- [ ] supabase init
-- [ ] Migration 001_initial_schema.sql
-- [ ] src/lib/supabase.ts
-- [ ] src/types/index.ts
+- [x] supabase init
+- [x] Migration 001_initial_schema.sql
+- [x] src/lib/supabase.ts
+- [x] src/types/index.ts
 
 ## Phase 2 — Claude Code Setup
-- [ ] .claude/CLAUDE.md
-- [ ] .claude/hooks/post_edit.json.disabled
-- [ ] .claude/skills/component.md
-- [ ] .claude/mcp.json
+- [x] .claude/CLAUDE.md
+- [x] .claude/hooks/post_edit.json.disabled
+- [x] .claude/skills/component.md
+- [x] .claude/mcp.json
 
 ## Phase 3 — Core Components
-- [ ] AppHeader
-- [ ] BoardCard + test
-- [ ] KanbanColumn + test
-- [ ] KanbanCard + test
-- [ ] src/components/index.ts
+- [x] AppHeader
+- [x] BoardCard + test
+- [x] KanbanColumn + test
+- [x] KanbanCard + test
+- [x] src/components/index.ts
 
 ## Phase 4 — Hooks
-- [ ] useBoards.ts
-- [ ] useColumns.ts
-- [ ] useCards.ts (WITH intentional bug)
+- [x] useBoards.ts
+- [x] useColumns.ts
+- [x] useCards.ts (WITH intentional bug)
 
 ## Phase 5 — Pages
 - [x] LoginPage.tsx (with data-testid)
@@ -55,12 +55,12 @@
 - [x] data-testid verified in components
 
 ## Phase 9 — Demo Setup
-- [ ] supabase start + db push
-- [ ] Demo user created
-- [ ] Seed data inserted
-- [ ] GitHub issue created (bug + demo labels)
+- [x] supabase start + db push
+- [x] Demo user created
+- [x] Seed data inserted
+- [x] GitHub issue created (bug + demo labels)
 - [ ] GitHub token in mcp.json
-- [ ] playwright install chromium
+- [x] playwright install chromium
 - [ ] Final push to GitHub
 
 ## Phase 10 — Final Verification
