@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
-import { Board } from '@/types'
+import type { Board } from '@/types'
 
 export function useBoards() {
   const [boards, setBoards] = useState<Board[]>([])

@@ -1,4 +1,4 @@
-import { Column, Card as CardType } from '@/types'
+import type { Column, Card as CardType } from '@/types'
 import { Badge } from '@/components/ui/badge'
 import { useDroppable } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'

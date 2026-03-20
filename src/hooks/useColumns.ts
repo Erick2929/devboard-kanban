@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
-import { Column } from '@/types'
+import type { Column } from '@/types'
 
 export function useColumns(boardId: string | undefined) {
   const [columns, setColumns] = useState<Column[]>([])

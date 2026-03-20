@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { KanbanColumn } from '../'
-import { Column, Card } from '@/types'
+import type { Column, Card } from '@/types'
 
 // Mock dnd-kit since it requires a DndContext
 vi.mock('@dnd-kit/core', () => ({

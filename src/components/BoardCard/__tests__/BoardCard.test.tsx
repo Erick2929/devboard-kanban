@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { BoardCard } from '../'
-import { Board } from '@/types'
+import type { Board } from '@/types'
 
 const mockBoard: Board = {
   id: '1',
