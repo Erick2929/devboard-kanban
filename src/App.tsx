@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
-import { Session } from '@supabase/supabase-js'
+import type { Session } from '@supabase/supabase-js'
 import { LoginPage } from '@/pages/LoginPage'
 import { BoardsPage } from '@/pages/BoardsPage'
 import { BoardDetailPage } from '@/pages/BoardDetailPage'

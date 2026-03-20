@@ -1,4 +1,4 @@
-import { Card as CardType } from '@/types'
+import type { Card as CardType } from '@/types'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { MessageSquare, CheckCircle2 } from 'lucide-react'

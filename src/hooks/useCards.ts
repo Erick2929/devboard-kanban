@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
-import { Card, DragResult } from '@/types'
+import type { Card, DragResult } from '@/types'
 
 function moveCard(cards: Card[], result: DragResult): Card[] {
   return cards.map((card) => {

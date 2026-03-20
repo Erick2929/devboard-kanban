@@ -1,4 +1,4 @@
-import { Board } from '@/types'
+import type { Board } from '@/types'
 import { Card, CardHeader, CardTitle } from '@/components/ui/card'
 
 interface BoardCardProps {

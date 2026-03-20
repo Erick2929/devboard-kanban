@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { KanbanCard } from '../'
-import { Card } from '@/types'
+import type { Card } from '@/types'
 
 vi.mock('@dnd-kit/sortable', () => ({
   useSortable: () => ({

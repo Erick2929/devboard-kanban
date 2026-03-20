@@ -1,4 +1,4 @@
-import { Column, Card as CardType } from '@/types'
+import type { Column, Card as CardType } from '@/types'
 import { useDroppable } from '@dnd-kit/core'
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { KanbanCard } from '@/components/KanbanCard'
