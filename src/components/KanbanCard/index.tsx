@@ -1,14 +1,16 @@
 import type { Card as CardType } from '@/types'
 import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { GripVertical } from 'lucide-react'
+import { GripVertical, Trash2 } from 'lucide-react'
 
 interface KanbanCardProps {
   card: CardType
+  onDelete?: () => void
 }
 
-export function KanbanCard({ card }: KanbanCardProps) {
+export function KanbanCard({ card, onDelete }: KanbanCardProps) {
   const {
     attributes,
     listeners,
@@ -28,7 +30,7 @@ export function KanbanCard({ card }: KanbanCardProps) {
     <Card
       ref={setNodeRef}
       style={style}
-      className="cursor-grab active:cursor-grabbing"
+      className="cursor-grab active:cursor-grabbing group relative"
       data-testid="kanban-card"
     >
       <CardContent className="p-3 flex items-center gap-2">
@@ -37,7 +39,18 @@ export function KanbanCard({ card }: KanbanCardProps) {
           {...attributes}
           {...listeners}
         />
-        <span className="text-sm">{card.title}</span>
+        <span className="text-sm flex-1">{card.title}</span>
+        {onDelete && (
+          <Button
+            variant="ghost"
+            size="icon"
+            className="opacity-0 group-hover:opacity-100 transition-opacity duration-150 text-muted-foreground hover:text-destructive h-6 w-6 flex-shrink-0"
+            onClick={onDelete}
+            data-testid="delete-card-button"
+          >
+            <Trash2 size={14} />
+          </Button>
+        )}
       </CardContent>
     </Card>
   )

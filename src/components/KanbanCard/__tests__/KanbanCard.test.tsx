@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { KanbanCard } from '../'
 import type { Card } from '@/types'
 
@@ -34,5 +34,17 @@ describe('KanbanCard', () => {
   it('has correct data-testid', () => {
     render(<KanbanCard card={mockCard} />)
     expect(screen.getByTestId('kanban-card')).toBeInTheDocument()
+  })
+
+  it('renders delete button when onDelete prop is provided', () => {
+    render(<KanbanCard card={mockCard} onDelete={vi.fn()} />)
+    expect(screen.getByTestId('delete-card-button')).toBeInTheDocument()
+  })
+
+  it('calls onDelete when delete button is clicked', () => {
+    const handleDelete = vi.fn()
+    render(<KanbanCard card={mockCard} onDelete={handleDelete} />)
+    fireEvent.click(screen.getByTestId('delete-card-button'))
+    expect(handleDelete).toHaveBeenCalled()
   })
 })
