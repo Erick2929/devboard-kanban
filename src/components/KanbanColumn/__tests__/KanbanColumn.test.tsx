@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { KanbanColumn } from '../'
 import type { Column, Card } from '@/types'
 
@@ -11,8 +11,11 @@ vi.mock('@dnd-kit/sortable', () => ({
   verticalListSortingStrategy: {},
 }))
 vi.mock('@/components/KanbanCard', () => ({
-  KanbanCard: ({ card }: { card: Card }) => (
-    <div data-testid="kanban-card">{card.title}</div>
+  KanbanCard: ({ card, onDelete }: { card: Card; onDelete?: () => void }) => (
+    <div data-testid="kanban-card">
+      {card.title}
+      {onDelete && <button data-testid="delete-card-button" onClick={onDelete}>Delete</button>}
+    </div>
   ),
 }))
 
@@ -49,5 +52,24 @@ describe('KanbanColumn', () => {
   it('renders cards', () => {
     render(<KanbanColumn column={mockColumn} cards={mockCards} />)
     expect(screen.getByText('Test Card')).toBeInTheDocument()
+  })
+
+  it('renders delete column button when onDelete prop is provided', () => {
+    render(<KanbanColumn column={mockColumn} cards={[]} onDelete={vi.fn()} />)
+    expect(screen.getByTestId('delete-column-button')).toBeInTheDocument()
+  })
+
+  it('calls onDelete when delete column button is clicked', () => {
+    const handleDelete = vi.fn()
+    render(<KanbanColumn column={mockColumn} cards={[]} onDelete={handleDelete} />)
+    fireEvent.click(screen.getByTestId('delete-column-button'))
+    expect(handleDelete).toHaveBeenCalled()
+  })
+
+  it('propagates onDeleteCard to card delete buttons', () => {
+    const handleDeleteCard = vi.fn()
+    render(<KanbanColumn column={mockColumn} cards={mockCards} onDeleteCard={handleDeleteCard} />)
+    fireEvent.click(screen.getByTestId('delete-card-button'))
+    expect(handleDeleteCard).toHaveBeenCalledWith('card-1')
   })
 })
