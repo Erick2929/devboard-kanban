@@ -44,5 +44,13 @@ export function useColumns(boardId: string | undefined) {
     fetchColumns()
   }, [boardId])
 
-  return { columns, loading, error, createColumn, refetch: fetchColumns }
+  const deleteColumn = async (id: string) => {
+    const { error } = await supabase.from('columns').delete().eq('id', id)
+    if (!error) {
+      setColumns((prev) => prev.filter((c) => c.id !== id))
+    }
+    return { error }
+  }
+
+  return { columns, loading, error, createColumn, deleteColumn, refetch: fetchColumns }
 }

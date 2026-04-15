@@ -59,5 +59,13 @@ export function useCards(columnIds: string[]) {
     fetchCards()
   }, [columnIds.join(',')])
 
-  return { cards, loading, error, createCard, handleCardDrop, refetch: fetchCards }
+  const deleteCard = async (id: string) => {
+    const { error } = await supabase.from('cards').delete().eq('id', id)
+    if (!error) {
+      setCards((prev) => prev.filter((c) => c.id !== id))
+    }
+    return { error }
+  }
+
+  return { cards, loading, error, createCard, handleCardDrop, deleteCard, refetch: fetchCards }
 }
