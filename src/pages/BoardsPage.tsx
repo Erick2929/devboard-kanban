@@ -19,7 +19,7 @@ import { Plus } from 'lucide-react'
 
 export function BoardsPage() {
   const navigate = useNavigate()
-  const { boards, loading, createBoard } = useBoards()
+  const { boards, loading, createBoard, deleteBoard } = useBoards()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [newBoardName, setNewBoardName] = useState('')
   const [creating, setCreating] = useState(false)
@@ -68,7 +68,7 @@ export function BoardsPage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {boards.map((board) => (
-              <BoardCard key={board.id} board={board} onClick={handleBoardClick} />
+              <BoardCard key={board.id} board={board} onClick={handleBoardClick} onDelete={() => deleteBoard(board.id)} />
             ))}
           </div>
         )}

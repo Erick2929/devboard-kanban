@@ -11,9 +11,9 @@ import type { DragResult } from "@/types";
 export function BoardDetailPage() {
   const { id: boardId } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { columns, loading: columnsLoading } = useColumns(boardId);
+  const { columns, loading: columnsLoading, deleteColumn } = useColumns(boardId);
   const columnIds = columns.map((c) => c.id);
-  const { cards, handleCardDrop } = useCards(columnIds);
+  const { cards, handleCardDrop, deleteCard } = useCards(columnIds);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -72,6 +72,8 @@ export function BoardDetailPage() {
                 key={column.id}
                 column={column}
                 cards={cards.filter((c) => c.column_id === column.id)}
+                onDelete={() => deleteColumn(column.id)}
+                onDeleteCard={deleteCard}
               />
             ))}
           </div>
